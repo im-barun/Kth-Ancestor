@@ -1,0 +1,50 @@
+import java.util.*;
+public class Kthancestor {
+
+	
+       
+	
+	
+	public static void main(String[] Args) {
+		// TODO Auto-generAted method stub
+		Scanner sc = new Scanner(System.in);
+		int n=sc.nextInt();
+		ArrayList<Integer> A=new ArrayList<Integer>();
+		for(int i=0;i<n;i++)
+			A.add(sc.nextInt());
+		int max,index,index_so_far,min_so_far=0;
+		int result=0;
+		for(int count=1;count<n;count++)
+		{
+			index=0;
+			index_so_far=0;
+			for(int i=0;i<A.size()-1;i++)
+			{
+				if(A.get(i)>=A.get(i+1)){
+					max=A.get(i);
+				index=i+1;
+				}
+				else{
+					max=A.get(i+1);
+					index=i;
+				}
+				if(i==0){
+					min_so_far=max;
+					index_so_far=index;
+				}else if(min_so_far>max){
+						min_so_far=max;
+						index_so_far=index;
+						}
+				//}
+				//no need to update index here since index getting updated in every iteration
+			}
+			result+=min_so_far;
+			A.remove(index_so_far);
+		}
+		System.out.println(result);
+
+	}
+           }
+	
+
+
